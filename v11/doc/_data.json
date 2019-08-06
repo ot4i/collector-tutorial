@@ -1,0 +1,271 @@
+{
+    "version": "0.1",
+    "pageContent": 
+	{
+        "_comments": "object that contains data for page labels, buttons, etc.",
+        "navItems": 
+		{
+            "_common": 
+			{
+                "buttonBackToGallery": 
+				{
+                    "name": "Back To Gallery",
+					"method": "backToGallery()",
+					"idName": "backToGallery"	
+                },
+                "buttonStartTutorial": 
+				{
+                    "name": "Start Tutorial",
+					"method": "startTutorialFromDetailsScreen()",
+					"idName": "startTutorial"
+                },
+				"buttonViewDetails": 
+				{
+                    "name": "View Details",
+					"method": "viewDetails()",
+					"idName": "stepsViewDetails"	
+                }
+            }
+        }
+    },
+    "tutorial": 
+	{
+        "_common": 
+		{
+            "name": "Using a Collector node to gather together messages in a flow",
+            "shortDescription": "Learn how to use the Collector node to gather together two separate HTTP input messages which arrive in to a message flow at different times.",
+            "durationText": "This tutorial takes approximately",
+            "durationTime": "10 minutes",
+            "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
+            "resourceToOpen": "MainFlow",
+            "helpLink": 
+			{
+                "text": "IBM Knowledge Center",
+                "link": "/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm"
+            }
+        },
+        "pageDetails": 
+		{
+            "topicsName": "Tutorial Topics",
+            "_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
+            "topicList": 
+			[
+                {
+                    "title": "Collector node"
+                }
+            ],
+            "outcomesName": "Learning outcomes",
+            "_outcomesComment": "A description of what the user will have learned or accomplished by running this tutorial.",
+            "outcomeList": 
+			[
+                {
+                    "title": "Use IBM App Connect Enterprise to collect together messages which arrive in a message flow at different times."
+                }
+            ],
+            "summary": 
+			{
+                "overviewName": "OVERVIEW",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the ACE concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "sections": 
+				[
+                    {
+                        "section": "This tutorial demonstrates a simple message flow that is driven from JSON input messages over HTTP which are received by two separate HTTPInput nodes. Each HTTPInput is wired directly to an HTTPReply node which echoes the same message back to the Requestor. Each HTTPInput node also drives an Input terminal of a Collector node whose role is to collect together 1 response from each input and to propagate those messages together downstream to a trace node which records the combined data in a trace file."
+                    },
+                    {
+                        "section": "The tutorial requires an ACE integration node owned server, or a standalone server."
+                    },
+                    {
+                        "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides an application to hold the message flow. This scenario uses the Collector node which requires your integration node or server to be associated with a local queue manager, so an MQ installation is required. There are no other pre-requisites needed by the scenario."
+                    }
+                ]
+            },
+			"helpLinks": 
+			{
+				"_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+				"title": "Find out more",
+				"details": 
+				[
+					{
+						"title": "Knowledge Center link to ",
+						"description": "Developing integration solutions by using applications",
+						"link": "com.ibm.etools.mft.doc/bi12002_.htm",
+						"type": "help"
+					}
+				]
+			}
+        },
+        "pageSteps": 
+		{
+            "create": 
+			{
+                "overview": 
+				{
+                    "name": "Create",
+                    "heading": "Import projects",
+                    "_createComment": "A description of what will happen when the user clicks Import.",
+                    "sections": 
+					[
+                        {
+                            "section": "When you click Import, a project will be created in your workspace: An application named <span class='application'>ExampleCollector</span>."
+                        },
+                        {
+                            "section": "<span class='application'>ExampleCollector</span> provides a single message flow named <span class='resource'>Collector</span>. Two HTTPInput nodes are configured to receive JSON input messages. Each HTTPInput is wired directly to an HTTPReply node which echoes the same message back to the Requestor. Each HTTPInput node is also wired to an Input terminal of a Collector node whose role is to collect together one response from each input and to then propagate those messages together downstream to a trace node which records the combined data in a trace file."
+						},
+                        {
+			    			"section": "Once imported using the link on the right, the application <span class='application'>ExampleCollector</span> is ready to be deployed and tested. To deploy, you can use a provided BAR file, as described on the Prepare tab."
+						}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Developing integration solutions by using applications",
+                            "link": "com.ibm.etools.mft.doc/bi12002_.htm"
+                        }
+                    ]
+                },
+                "actions": 
+				{
+                    "title": "Create Actions",
+                    "details": 
+					[
+                        {
+                            "name": "Import",
+                            "method": "importArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "prepare": 
+			{
+                "overview": 
+				{
+                    "name": "Prepare",
+                    "heading": "Prepare a trace directory, create a queue manager and integration node, and then deploy the message flow",
+                    "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
+                    "sections": 
+		     [
+			 {
+                     "section":"The Trace node uses a trace directory and the Collector node requires MQ queues to operate, so execute the following steps to prepare your environment accordingly:",
+                     "steps":{
+                        "type":"ordered",
+                        "details":[
+                           	{
+                    			"details":"The message flow's Trace node will attempt to write a trace file to the directory <code><span class='cmdname'>C:\\temp</span></code>. Create this directory if it does not already exist, or edit the Trace node in the message flow to use a different directory suitable for your runtime environment."
+                    		},
+						   	{
+                              "details":"Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"Open the IBM App Connect Enterprise Console. If you don't already have one, create and start a queue manager:<br><code><span class='cmdname'>crtmqm</span> <span class='varname'> qmgr</span></code><br><code><span class='cmdname'>strmqm</span> <span class='varname'> qmgr</span></code>"
+                                    },
+                                    {
+                                       "details":"Next create the queues by typing the following command:<br><code>server\\sample\\wmq\\iib_createqueues <span class='varname'>qmgr</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name."
+                                    }									
+                                 ]
+                              }
+                           },                           
+                           {
+                              "details":"Create an integration node which is associated with the above queue manager by completing the following steps:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"In the console window, create an integration node by typing the following command:<br><code><span class='cmdname'>mqsicreatebroker</span> <span class='varname'>TESTNODE</span> -q <span class='varname'>qmgr</span></code>"
+                                    },
+									{
+                                       "details":"Start the integration node by typing the following command:<br><code><span class='cmdname'>mqsistart</span> <span class='varname'>TESTNODE</span></code>"
+                                    },
+                                    {
+                                       "details":"Create an integration server associated with the integration node by typing the following command:<br><code><span class='cmdname'>mqsicreateexecutiongroup</span> <span class='varname'>TESTNODE</span> -e <span class='varname'>default</span></code>"
+                                    }
+                                 ]
+                              }
+                           },
+						   {
+						   		"details":"Back in the Toolkit, drag and drop deploy the provided BAR file named <span class='application'>Collector.bar</span> which you will find inside the <span class='application'>ExampleCollector</span> application."
+                    		}							
+                        ]
+                     }
+                  }
+             ]
+                },
+                "helpLinks": 
+				{
+                }
+            },
+            "run": 
+			{
+                "overview": 
+				{
+                    "name": "Run",
+                    "heading": "",
+                    "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
+                "sections":[                            
+                            {
+                                "section": "<h4>Use the Flow Exerciser to test the tutorial scenario",
+                                "steps": {
+                                    "type": "ordered",
+                                    "details": [                                      
+                                    {
+                                        "details": "Open <span class='resource'>Collector.msgflow</span>.",
+                                        "substeps":{
+                                        "type": "unordered",
+                                        "details": 
+								        [
+                                        {
+                                          "details": "Click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow (when challenged you do not need to redeploy the flow again)."
+                                        },										
+										{
+                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />."
+                                        },
+                                        {
+                                            "details": "A saved input message is provided named <span class='resource'>Input1</span> which contains this data:<br><span class='resource'>{\"Message1\":\"Hello\"}</span><br>Select this input message and click Send and your message is sent to the HTTPInput node. Close the dialog and a green line is shown plotting the path of the message."
+                				        },										
+										{
+                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' /> a second time."
+                                        },
+                                        {
+                                            "details": "A second saved input message is provided named <span class='resource'>Input2</span> which contains this data:<br><span class='resource'>{\"Message2\":\"World\"}</span><br>Select this input message and click Send and your message is sent to the HTTPInput node. Close the dialog and a green line is shown plotting the path of the second message. Note that after the second message, there was also a propagation out of the Collector node to the downstream trace node."
+                				        },										
+										{
+                                            "details": "Once this second part of the flow has fired, using a text editor open the trace file <span class='resource'>C:\\temp\\TraceCollector_Out.txt</span>, which should contain an entry that starts like this:<br><code>The Out terminal of the Collector node has fired at 2019-08-06 20:15:11.190112</code><br><code>The combined message from the two collected messages is:</code><br><code>Hello World</code><br>... Following this, the trace also contains a listing of the logical tree structure, which includes all of the fields and headers for both input messages which are now collected together."
+										}
+                                        ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+			{
+			    "section": "This tutorial has shown the Collector node gather together two separate HTTP input messages which arrive in to a message flow at different times."
+			}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+ 						{
+                            "title": "Knowledge Center link to ",
+                            "description": "Collector node",
+                            "link": "com.ibm.etools.mft.doc/ac37820_.htm"
+                        },
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Testing your message flow by using the Flow exerciser",
+                            "link": "com.ibm.etools.mft.doc/rt26110_.htm"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
