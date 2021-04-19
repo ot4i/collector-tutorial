@@ -65,14 +65,14 @@
             "summary": 
 			{
                 "overviewName": "OVERVIEW",
-                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the ACE concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
                 "sections": 
 				[
                     {
                         "section": "This tutorial demonstrates a simple message flow that is driven from JSON input messages over HTTP which are received by two separate HTTPInput nodes. Each HTTPInput is wired directly to an HTTPReply node which echoes the same message back to the Requestor. Each HTTPInput node also drives an Input terminal of a Collector node whose role is to collect together 1 response from each input and to propagate those messages together downstream to a trace node which records the combined data in a trace file."
                     },
                     {
-                        "section": "The tutorial requires an ACE integration node owned server, or a standalone server."
+                        "section": "The tutorial requires an integration node owned server, or a standalone server."
                     },
                     {
                         "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides an application to hold the message flow. This scenario uses the Collector node which requires your integration node or server to be associated with a local queue manager, so an MQ installation is required. There are no other pre-requisites needed by the scenario."
