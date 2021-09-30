@@ -227,13 +227,13 @@
                                             "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />."
                                         },
                                         {
-                                            "details": "A saved input message is provided named <span class='resource'>Input1</span> which contains this data:<br><span class='resource'>{\"Message1\":\"Hello\"}</span><br>Select this input message and click Send and your message is sent to the HTTPInput node. Close the dialog and a green line is shown plotting the path of the message."
+                                            "details": "A saved input message is provided named <span class='resource'>Input1</span> which contains this data:<br><span class='resource'>{\"Message1\":\"Hello\"}</span><br>Select this input message and click Send and your message is sent to the HTTPInput node. Close the dialog and a blue line is shown plotting the path of the message."
                 				        },										
 										{
                                             "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' /> a second time."
                                         },
                                         {
-                                            "details": "A second saved input message is provided named <span class='resource'>Input2</span> which contains this data:<br><span class='resource'>{\"Message2\":\"World\"}</span><br>Select this input message and click Send and your message is sent to the HTTPInput node. Close the dialog and a green line is shown plotting the path of the second message. Note that after the second message, there was also a propagation out of the Collector node to the downstream trace node."
+                                            "details": "A second saved input message is provided named <span class='resource'>Input2</span> which contains this data:<br><span class='resource'>{\"Message2\":\"World\"}</span><br>Select this input message and click Send and your message is sent to the HTTPInput node. Close the dialog and a blue line is shown plotting the path of the second message. Note that after the second message, there was also a propagation out of the Collector node to the downstream trace node."
                 				        },										
 										{
                                             "details": "Once this second part of the flow has fired, using a text editor open the trace file <span class='resource'>C:\\temp\\TraceCollector_Out.txt</span>, which should contain an entry that starts like this:<br><code>The Out terminal of the Collector node has fired at 2019-08-06 20:15:11.190112</code><br><code>The combined message from the two collected messages is:</code><br><code>Hello World</code><br>... Following this, the trace also contains a listing of the logical tree structure, which includes all of the fields and headers for both input messages which are now collected together."
